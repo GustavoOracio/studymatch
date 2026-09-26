@@ -1,0 +1,12 @@
+# Ambiente Python
+.venv/
+__pycache__/
+
+*.pyc
+
+# Segredo do Streamlit (URL/tokens do Xano)
+.streamlit/secrets.toml
+
+# Sistema
+.DS_Store
+Thumbs.db

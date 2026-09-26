@@ -1,0 +1,49 @@
+schema: spec-driven
+
+context: |
+  Project: StudyMatch — aplicação web que conecta alunos com dificuldades
+  acadêmicas em comum para estudarem juntos.
+
+  Domain: Alunos registram disciplinas de dificuldade e horários disponíveis.
+  O sistema sugere colegas compatíveis com percentual de compatibilidade.
+  Alunos demonstram interesse e confirmam matches.
+
+  Tech stack:
+    Backend: Xano (banco, API REST e autenticação). Código XanoScript em ./xano,
+    sincronizado com o Xano CLI.
+    Frontend: Streamlit, tecnologia exclusiva do frontend. Não introduzir outro
+    framework de frontend sem mudança explícita da decisão arquitetural.
+
+  Architecture:
+    O Streamlit apenas consome a API do Xano.
+    Regras de negócio e validações ficam no Xano.
+    O banco já possui as tabelas curso, disciplina, user, usuario_disciplina,
+    disponibilidade e match_interesse; evoluir o modelo junto com as funcionalidades.
+
+  Security:
+    Autorização aplicada no backend. Cada aluno só altera os próprios dados.
+    Não versionar tokens ou segredos.
+
+  Development:
+    Desenvolvimento incremental com OpenSpec.
+    Mudanças relevantes devem ser especificadas antes da implementação.
+    Preferir entregas verticais (endpoint + tela).
+
+  Language:
+    Escrever a documentação e os artefatos OpenSpec em português brasileiro.
+
+rules:
+  proposal:
+    - Explicitar o que está fora do escopo.
+  specs:
+    - Escrever requisitos verificáveis com cenários de sucesso e de erro.
+  tasks:
+    - Separar tarefas de backend (Xano) e de frontend (Streamlit).
+
+operations:
+  apply:
+    guidance:
+      - Revisar as alterações com git diff e usar xano workspace push com --dry-run antes do push real.
+  archive:
+    guidance:
+      - Confirmar que a implementação corresponde à especificação.
